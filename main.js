@@ -1,12 +1,25 @@
-const marks = [80, 95, 78, 85];
-// Iterate each number
-//return an array with ultimate result (new array)
+const marks = [80, 92, 95, 78, 85];
 
-// const dbleMarks = marks.map(mark => mark * 2);
-// console.log(dbleMarks);
-//console.log(marks);
-let dbl = [];
-marks.forEach(mark => {
-  dbl.push(mark * 2);
-});
-console.log(dbl);
+//Find Hedlper
+// const result = marks.find(mark => mark >= 90);
+
+//FindIndex
+// const result = marks.findIndex(mark => mark >= 90);
+
+//Every Helper
+// const result = marks.every(mark => mark >= 90);
+
+//some helper
+// const result = marks.some(mark => mark >= 90);
+
+//Filter Helper
+//return array
+//const result = marks.filter(mark => mark >= 90);
+
+//Reduce helper
+//Add multiple number
+// const result = marks.reduce((sum, number) => {
+//   return (sum += number);
+// }, 0);
+
+console.log(result);
