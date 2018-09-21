@@ -1,36 +1,41 @@
-//Problem
-// var firstName = "samim";
-// //1000 line code
-// var firstName = "Anis"; //Intentional
-
-//scoping Issue
-// const age = 26;
-// if (age > 18) {
-//   const canVote = "I can vote"; //tmp variable
-//   console.log(canVote);
+const firstName = "samim";
+const lastName = "Fazlu";
+const age = 25;
+const profession = "web developer";
+// function showBio() {
+//   return (
+//     "my name is " +
+//     firstName +
+//     " " +
+//     lastName +
+//     " and I am " +
+//     age +
+//     " I am a " +
+//     profession
+//   );
 // }
 
-//console.log(canVote);
-
-// {
-//   let name = "samim";
+// function showBio() {
+//   //Template string
+//   return `My name is ${firstName.toUpperCase()} ${lastName.toUpperCase()} and I am ${age -
+//     1} and I am a ${profession} `;
 // }
-// console.log(name);
+//console.log(showBio());
 
-// function prinbtNumber() {
-//   for (let i = 0; i < 10; i++) {
-//     console.log(i);
-//   }
+function modify(strings, ...values) {
+  console.log(strings, values);
+  let str = "";
+  strings.forEach((strings, i) => {
+    str += `${strings}<b>${values[i] || ""}</b>`;
+  });
+  return str;
+}
 
-//   console.log(i, "Not needed");
-// }
-// prinbtNumber();
+const html = modify`
+  <h1>Header</h1>
+  <p>I am a paragraph</p>
+  <p>My name is ${firstName.toUpperCase()} ${lastName.toUpperCase()} and I am ${age -
+  1} and I am a ${profession}</P>   
+`;
 
-//Solution
-
-// let firstName = "samim";
-
-//  firstName = "Anis";
-// const firstName = "samim";
-// firstName = "Anis";
-// console.log(firstName);
+document.body.innerHTML = html;
