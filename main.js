@@ -1,28 +1,25 @@
-//Chaining Promise
+//Generator function 
+//Give capablity to pause and resume function
+// function *logProgramming(){
+//     yield 'html';
+//     yield 'css';
+//     yield 'Javascript';
 
-const logDataP = (data) => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve(data);
-            //reject(Error('THis is a error .This is not cool'));
-        }, 3000)
-    });
+// }
+function myAjax(url) {
+    fetch(url)
+    .then(data => data.json())
+    .then(data => dataGen.next(data));
 }
+function *PlaceHolderdata(){
+   const post = yield myAjax('https://jsonplaceholder.typicode.com/posts/1');
+   console.log(post);
+   const comments = yield myAjax('https://jsonplaceholder.typicode.com/posts/1/comments')
+   console.log(comments);
 
-const logAnotherDataP = (anotheData) =>{
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve(anotheData + 1);
-            //reject(Error('THis is a error .This is not cool'));
-        }, 3000)
-    });
 }
-logDataP(1)
-    .then(data => {
-    //DATA SUCCESSSFULLY CAME\
-    console.log(data);
-    return logAnotherDataP(data)
-    
-    })
-    .then(anothData => console.log(anothData))
-    .catch(e => console.log(e));
+const dataGen = PlaceHolderdata();
+
+dataGen.next();
+
+
