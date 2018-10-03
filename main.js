@@ -1,32 +1,32 @@
-//string
-//Number
-//Boolean
-//complex type - Object function
+//Syntactic sugar
 
+//Class 
 
-
-
-//Symbol (unique identifer, uniquely generated value)
-
-
-// const samimAge = Symbol(26);
-// const AnisAge = Symbol(26);
-
-// console.log(samimAge === AnisAge);
-
-
-
-const bio = {
-  [Symbol('samim')]: {firstName: 'samim', age:26},
-  [Symbol('samim')]: {firstName: 'samim', age:28}
+class Person{
+  //property
+  constructor(name, age){
+    this.name = name;
+    this.age = age;
+    this.lng = [];
+    console.log('Running ...')
+  }
+  
+  //method
+  getBio(){
+    return `${this.name}.age- ${this.age}
+    choosenLng - ${this.lng.join(',')}
+    ` 
+  }
+  setLng(lng){
+    this.lng.push(lng)
+  }
 }
 
-const syms = Object.getOwnPropertySymbols(bio);
+const samim = new Person('samim', 26);
+console.log(samim.getBio());
+samim.setLng('javascript');
+console.log(samim.getBio());
 
-//const data = syms.map(data => bio[data]);
-//console.log(data[1].age);
 
-for(const data of syms){
-  console.log(bio[data]);
-}
+
 
