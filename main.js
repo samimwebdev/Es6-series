@@ -1,34 +1,28 @@
-//fetch API
+//Chaining Promise
 
-// fetch('https://jsonplaceholder.typicode.com/comments')
-// .then(data => data.json())
-// .then(data => console.log(data))
-// .catch(e => console.log(e));
-
-
-//Behind the scene working with Promise
-// function logData(){
-//     setTimeout(() => {
-//         console.log(1);
-//         setTimeout(() => {
-//             console.log(2)
-//             setTimeout(() => {
-//                 console.log(2)
-//             }, 2000);
-//         }, 2000);
-
-//     }, 2000);
-// }
-
-// logData();
-
- const logDataP = new Promise((resolve, reject)=>{
+const logDataP = (data) => {
+    return new Promise((resolve, reject) => {
         setTimeout(() => {
-            resolve(1);         //reject(Error('THis is a error .This is not cool'));
-           },3000);
-     });
-logDataP
+            resolve(data);
+            //reject(Error('THis is a error .This is not cool'));
+        }, 3000)
+    });
+}
+
+const logAnotherDataP = (anotheData) =>{
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(anotheData + 1);
+            //reject(Error('THis is a error .This is not cool'));
+        }, 3000)
+    });
+}
+logDataP(1)
     .then(data => {
-        console.log(data);
+    //DATA SUCCESSSFULLY CAME\
+    console.log(data);
+    return logAnotherDataP(data)
+    
     })
+    .then(anothData => console.log(anothData))
     .catch(e => console.log(e));
