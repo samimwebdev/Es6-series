@@ -2,31 +2,57 @@
 
 //Class 
 
-class Person{
+class Programmer{
   //property
-  constructor(name, age){
-    this.name = name;
+  constructor(firstName, age){
+    this.firstName = firstName; //field
     this.age = age;
     this.lng = [];
     console.log('Running ...')
   }
   
-  //method
+  // getfirstName(){
+  //   return this.firstName;
+  // }
+
   getBio(){
-    return `${this.name}.age- ${this.age}
-    choosenLng - ${this.lng.join(',')}
-    ` 
+    return `${this.firstName}-${this.age} ${this.lng}`
   }
-  setLng(lng){
-    this.lng.push(lng)
+  //property
+
+  static salery(){
+    console.log('My salery $0')
+  }
+  get nickName(){
+    return this.firstName;
+  }
+  set nickName(value){
+    this.firstName = value.toUpperCase();
+  }
+
+  set Mainlng(lng){
+    this.lng.push('Javascript');
   }
 }
 
-const samim = new Person('samim', 26);
-console.log(samim.getBio());
-samim.setLng('javascript');
-console.log(samim.getBio());
+class specialProgrammer extends Programmer{
+  constructor(firstName, age, specialLng){
+    super(firstName, age);
+    this.specialLng = specialLng;
+  }
+  getBio(){
+    return `${super.getBio()} ${this.speciallng}` 
+  }
+  get speciallng(){
+    return this.specialLng;
+  }
+  set Mainlng(lng){
+   return this.lng.push(lng);
+  }
 
+}
 
+const samim = new Programmer("samim", 26);
 
+const anis = new specialProgrammer("Anis", 26, 'go');
 
