@@ -1,25 +1,37 @@
-//Generator function 
-//Give capablity to pause and resume function
-// function *logProgramming(){
-//     yield 'html';
-//     yield 'css';
-//     yield 'Javascript';
+//Proxy -usecase object
 
-// }
-function myAjax(url) {
-    fetch(url)
-    .then(data => data.json())
-    .then(data => dataGen.next(data));
+const personal = {
+    firstName: 'samim',
+    age: 26,
+    lng:['js','php']
 }
-function *PlaceHolderdata(){
-   const post = yield myAjax('https://jsonplaceholder.typicode.com/posts/1');
-   console.log(post);
-   const comments = yield myAjax('https://jsonplaceholder.typicode.com/posts/1/comments')
-   console.log(comments);
 
+
+const accessModifier = {
+    get(target, firstName){
+        console.log(`${target[firstName].toUpperCase()}` );
+    },
+    set(target, age, value){
+        if (typeof value !== 'number'){
+            console.log('Age must be a number');
+            //return
+        } else{
+            target[age] = value;
+            console.log(target[age]);
+        }
+    }
 }
-const dataGen = PlaceHolderdata();
 
-dataGen.next();
+//proxy -Medium layer
+
+const personalProxy = new Proxy(personal,accessModifier);
+console.log(personalProxy.firstName);
+// personal.firstName = 'Anis'
+personalProxy.age = 'Anis';
+
+// console.log(personal.age);
+
+
+
 
 
